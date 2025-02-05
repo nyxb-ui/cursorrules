@@ -55,7 +55,7 @@ export function Menu() {
                      onClick={() => handleClick(section.tag)}
                      key={section.tag}
                      variant="ghost"
-                     className="w-full justify-start"
+                     className="w-full justify-start whitespace-normal text-left"
                   >
                      {section.tag}
                      <span className="ml-auto text-[#878787]">

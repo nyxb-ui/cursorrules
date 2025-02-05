@@ -45,7 +45,8 @@
             "useTemplate": "off",
             "noUselessElse": "off",
             "useSelfClosingElements": "off",
-            "useExponentiationOperator": "off"
+            "useExponentiationOperator": "off",
+            "useNumberNamespace": "off"
          },
          "suspicious": {
             "noImplicitAnyLet": "off",
@@ -55,7 +56,8 @@
             "noRedeclare": "off",
             "noSuspiciousSemicolonInJsx": "off",
             "useIsArray": "off",
-            "noAssignInExpressions": "off"
+            "noAssignInExpressions": "off",
+            "noGlobalIsNan": "off"
          },
          "complexity": {
             "noForEach": "off",

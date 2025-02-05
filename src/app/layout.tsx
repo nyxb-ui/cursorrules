@@ -12,44 +12,44 @@ import { Toaster } from "~/components/ui/sonner"
 import { ny } from "~/lib/utils"
 
 export const metadata: Metadata = {
-   title: "Cursor Directory",
+   title: ".cursorrules",
    description: "Find the best cursor rules for your framework and language",
    icons: [
       {
          rel: "icon",
-         url: "https://cdn.midday.ai/cursor/favicon.png",
+         url: "https://cdn.nyxbui.design/cursor/favicon.png",
       },
    ],
    openGraph: {
-      title: "Cursor Directory",
+      title: ".cursorrules",
       description: "Find the best cursor rules for your framework and language",
-      url: "https://cursor.directory",
+      url: "https://cursorrul.es",
       locale: "en_US",
       type: "website",
       images: [
          {
-            url: "https://cdn.midday.ai/cursor/opengraph-image.png",
+            url: "https://cdn.nyxbui.design/cursor/opengraph-image.png",
             width: 800,
             height: 600,
          },
          {
-            url: "https://cdn.midday.ai/cursor/opengraph-image.png",
+            url: "https://cdn.nyxbui.design/cursor/opengraph-image.png",
             width: 1800,
             height: 1600,
          },
       ],
    },
    twitter: {
-      title: "Cursor Directory",
+      title: ".cursorrules",
       description: "Find the best cursor rules for your framework and language",
       images: [
          {
-            url: "https://cdn.midday.ai/cursor/opengraph-image.png",
+            url: "https://cdn.nyxbui.design/cursor/opengraph-image.png",
             width: 800,
             height: 600,
          },
          {
-            url: "https://cdn.midday.ai/cursor/opengraph-image.png",
+            url: "https://cdn.nyxbui.design/cursor/opengraph-image.png",
             width: 1800,
             height: 1600,
          },
@@ -95,7 +95,7 @@ export default function RootLayout({
                   {children}
 
                   <a
-                     href="https://github.com/pontusab/cursor.directory"
+                     href="https://github.com/nyxb-ui/cursorrules"
                      target="_blank"
                      rel="noreferrer"
                   >
@@ -109,7 +109,7 @@ export default function RootLayout({
                   </a>
                </div>
 
-               {/* <Banner /> */}
+               <Banner />
                <Toaster />
             </ThemeProvider>
          </body>

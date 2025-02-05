@@ -2,7 +2,7 @@
    "name": "cursorrules",
    "displayName": "Cursorrules",
    "description": "An extension for Cursor that lets you pull .cursorrules files from cursorrul.es",
-   "version": "0.2.3",
+   "version": "0.2.5",
    "author": "Nyxb",
    "publisher": "Nyxb",
    "icon": "images/icon.png",
