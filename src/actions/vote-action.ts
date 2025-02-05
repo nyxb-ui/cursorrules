@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers"
 import { z } from "zod"
-import { redis } from "~/lib/redis"
+import { getRedisClient } from "~/lib/redis"
 import { actionClient } from "./safe-action"
 
 export const voteAction = actionClient
@@ -12,6 +12,7 @@ export const voteAction = actionClient
       }),
    )
    .action(async ({ parsedInput: { slug } }) => {
+      const redis = getRedisClient()
       const clientIP = await headers().then((headers) =>
          headers.get("x-forwarded-for"),
       )
