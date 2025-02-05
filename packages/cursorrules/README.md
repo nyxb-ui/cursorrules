@@ -1,12 +1,12 @@
 # Cursorrules
 
-Your [cursorrules.com](https://cursorrules.com/) in Raycast.
+Your [cursorrul.es](https://cursorrul.es/) in Raycast.
 
 [![raycast-cross-extension-badge]][raycast-cross-extension-link]
 
 ## Overview
 
-Cursorrules is a powerful Raycast extension that seamlessly integrates with [cursorrules.com](https://cursorrules.com/), allowing users to access, search, and utilize cursor rules directly within the Cursor Code Editor. This extension streamlines the process of finding and implementing cursor rules, enhancing productivity for developers using the Cursor IDE.
+Cursorrules is a powerful Raycast extension that seamlessly integrates with [cursorrul.es](https://cursorrul.es/), allowing users to access, search, and utilize cursor rules directly within the Cursor Code Editor. This extension streamlines the process of finding and implementing cursor rules and provides learning resources for Cursor IDE users.
 
 ## Features
 
@@ -15,7 +15,7 @@ Cursorrules is a powerful Raycast extension that seamlessly integrates with [cur
 - **One-Click Application**: Easily copy and create cursor rules to your project's `.cursor/rules` folder for Cursor v0.45 or `.cursorrules` for Cursor below v0.45.
 - **Starring System**: Save up to 10 favorite cursor rules for quick access.
 - **Local Modification**: Export and edit cursor rules as Markdown files within Cursor.
-- **YouTube Videos**: Access curated Cursor-related YouTube videos directly from the extension.
+- **Learning Resources**: Access curated Cursor tutorials, guides, and videos directly from the extension.
 
 ## Installation
 
@@ -25,33 +25,28 @@ Cursorrules is a powerful Raycast extension that seamlessly integrates with [cur
 ## Usage Guide
 
 1. **Launching the Extension**:
-
-   - Open Raycast and type `cursor directory` to use the commands.
+   - Open Raycast and type `cursorrules` to use the commands.
 
 2. **Searching for Cursor Rules**:
-
    - Use the fuzzy search functionality to find rules based on their titles.
 
 3. **Toggle Detailed View**:
-
    - Press `Cmd + D` to toggle the detailed view of a rule.
 
 4. **Copy and Apply Cursor Rules**:
-
    - Press `Cmd + Shift + C` to copy the rule content to your clipboard.
    - You can then choose to open recent projects to apply the rule directly, or press `Esc` to manually apply the rule to where you want.
    - If you have configured the default `Projects Directory`, you will be using the builtin `projects` command to open projects, otherwise you will be prompted to select recent projects via `degouville/cursor-recent-projects` extension, which is also optional.
 
 5. **Starring Rules**:
-
    - Star up to 10 cursor rules for quick access in future sessions via `Cmd + Shift + P`.
 
 6. **Local Modification**:
-
    - Press `Cmd + E` to open the cursor rule as a Markdown file in Cursor for editing.
 
-7. **YouTube Videos**:
-   - Access curated Cursor-related YouTube videos directly from the extension.
+7. **Learning Resources**:
+   - Access curated Cursor tutorials and videos via the `Learn Cursor` command.
+   - Browse through a collection of educational content to master Cursor IDE.
 
 ## Configuration
 

@@ -1,5 +1,6 @@
 import { Action, ActionPanel, Grid, Image } from "@raycast/api"
 import { getAvatarIcon } from "@raycast/utils"
+import fetch from "node-fetch"
 import { useEffect, useState } from "react"
 import { OpenPrefAction } from "./components/actions/OpenPrefAction"
 import type { Video } from "./types"
@@ -13,7 +14,7 @@ export default function Command() {
       async function fetchVideos() {
          try {
             const response = await fetch("https://cursorrul.es/api/videos")
-            const data = await response.json()
+            const data = (await response.json()) as { data: Video[] }
             setVideos(data.data)
          } catch (error) {
             console.error("Error fetching videos:", error)
@@ -44,10 +45,9 @@ export default function Command() {
                }}
                accessory={{
                   icon: {
-                     source:
-                        (isImageUrl(video.author.image) &&
-                           video.author.image) ||
-                        getAvatarIcon(video.author.name),
+                     source: isImageUrl(video.author.image)
+                        ? video.author.image
+                        : getAvatarIcon(video.author.name),
                      mask: Image.Mask.Circle,
                   },
                   tooltip: video.title,
