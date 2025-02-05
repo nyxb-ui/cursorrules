@@ -1,3 +1,5 @@
+"use client"
+
 import { ChevronDown } from "lucide-react"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
@@ -10,6 +12,7 @@ import {
 import type { Rule } from "~/data"
 import { generateNameAbbr, isImageUrl, ny } from "~/lib/utils"
 import { CopyButton } from "./copy-button"
+import { CursorRuleButton } from "./cursor-rule-button"
 import { ShareButton } from "./share-button"
 
 export function RuleCard({ rule, isPage }: { rule: Rule; isPage?: boolean }) {
@@ -99,6 +102,10 @@ export function RuleCard({ rule, isPage }: { rule: Rule; isPage?: boolean }) {
                </Popover>
             )}
          </CardHeader>
+
+         <div className="flex items-center gap-2 mt-4">
+            <CursorRuleButton slug={rule.slug} />
+         </div>
       </Card>
    )
 }
