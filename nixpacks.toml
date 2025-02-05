@@ -5,7 +5,7 @@ nixPkgs = ['nodejs', 'pnpm']
 cmds = ['pnpm install --frozen-lockfile']
 
 [phases.build]
-cmds = ['touch tsconfig.tsbuildinfo', 'pnpm run build']
+cmds = ['pnpm run build']
 
 [start]
 cmd = 'node .next/standalone/server.js'
