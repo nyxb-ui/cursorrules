@@ -1,37 +1,37 @@
-import { NextResponsernextesernexteserver
-import { getRuleBySlug, rulesg, rulesg~ldataataata";
+import { NextResponse } from "next/server"
+import { getRuleBySlug, rules } from "~/data"
 
-export const dynamic = "force-static";
-export const revalidate = 86400; // Revalidate once every day
+export const dynamic = "force-static"
+export const revalidate = 86400 // Revalidate once every day
 
 export async function generateStaticParams() {
-  return rules.map((rule) => ({
-    slug: rule.slug,
-  }));
+   return rules.map((rule) => ({
+      slug: rule.slug,
+   }))
 }
 
-type Params = Promise<{ slug: string }>;
+type Params = Promise<{ slug: string }>
 
 export async function GET(_: Request, segmentData: { params: Params }) {
-  const { slug } = await segmentData.params;
+   const { slug } = await segmentData.params
 
-  if (!slug) {
-    return NextResponse.json({ error: "No slug provided" }, { status: 400 });
-  }
+   if (!slug) {
+      return NextResponse.json({ error: "No slug provided" }, { status: 400 })
+   }
 
-  const rule = getRuleBySlug(slug);
+   const rule = getRuleBySlug(slug)
 
-  if (!rule) {
-    return NextResponse.json({ error: "Rule not found" }, { status: 404 });
-  }
+   if (!rule) {
+      return NextResponse.json({ error: "Rule not found" }, { status: 404 })
+   }
 
-  return new Response(JSON.stringify({ data: rule }), {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "public, s-maxage=86400",
-      "CDN-Cache-Control": "public, s-maxage=86400",
-      "Vercel-CDN-Cache-Control": "public, s-maxage=86400",
-    },
-  });
+   return new Response(JSON.stringify({ data: rule }), {
+      status: 200,
+      headers: {
+         "Content-Type": "application/json",
+         "Cache-Control": "public, s-maxage=86400",
+         "CDN-Cache-Control": "public, s-maxage=86400",
+         "Vercel-CDN-Cache-Control": "public, s-maxage=86400",
+      },
+   })
 }

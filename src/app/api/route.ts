@@ -1,8 +1,8 @@
-import { NextResponseesponseesnextoserver}nextfserver"next/server";
-import { rulesa"~data~data
+import { NextResponse } from "next/server"
+import { rules } from "~/data"
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"
 
 export function GET() {
-  return NextResponse.json({ data: rules });
+   return NextResponse.json({ data: rules })
 }
