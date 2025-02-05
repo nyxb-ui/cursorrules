@@ -16,19 +16,21 @@ export function CursorRuleButton({
    const handleAddToCursor = async () => {
       try {
          // Prüfe ob wir in Cursor sind
-         if (typeof window !== "undefined" && (window as any).vscode) {
+         if (
+            typeof window !== "undefined" &&
+            (window as any).acquireVsCodeApi
+         ) {
             try {
-               // Versuche die Extension anzusprechen
-               await (window as any).vscode.postMessage({
+               // Nutze die VSCode Webview API
+               const vscode = (window as any).acquireVsCodeApi()
+               vscode.postMessage({
                   command: "cursorRules.addRule",
                   slug,
                })
                toast.success("Rule added successfully!")
             } catch (error) {
-               // Extension ist nicht installiert
-               toast.error("Please install the Cursor Rules extension first")
-               toast("Opening VS Code Marketplace...", {
-                  description: "Install the extension and try again",
+               toast.error("Please install the Cursor Rules extension", {
+                  description: "Click to install from VS Code Marketplace",
                   action: {
                      label: "Install",
                      onClick: () =>
@@ -37,47 +39,56 @@ export function CursorRuleButton({
                            "_blank",
                         ),
                   },
+                  duration: 5000,
                })
             }
          } else {
-            toast.info("Opening Cursor...", {
-               description:
-                  "Make sure you have Cursor and the Cursor Rules extension installed",
-            })
+            // Prüfe ob Cursor bereits läuft
+            try {
+               const controller = new AbortController()
+               const timeoutId = setTimeout(() => controller.abort(), 500)
 
-            // Öffne Cursor direkt mit dem cursor:// Protocol Handler
-            const cursorUrl = `cursor://open?args=${encodeURIComponent(
-               JSON.stringify({
-                  command: "cursorRules.addRule",
-                  slug: slug,
-               }),
-            )}`
-
-            window.location.href = cursorUrl
-
-            // Fallback falls cursor:// nicht registriert ist
-            setTimeout(() => {
-               toast("Cursor not detected", {
-                  description:
-                     "You'll need both Cursor and the Cursor Rules extension",
-                  action: {
-                     label: "Get Started",
-                     onClick: () => {
-                        window.open("https://cursor.sh/download", "_blank")
-                        setTimeout(() => {
-                           window.open(
-                              "https://marketplace.visualstudio.com/items?itemName=nyxb.cursorrules",
-                              "_blank",
-                           )
-                        }, 500)
-                     },
-                  },
+               const response = await fetch("http://localhost:9999/status", {
+                  method: "HEAD",
+                  signal: controller.signal,
                })
-            }, 1000)
+
+               clearTimeout(timeoutId)
+
+               if (response.ok) {
+                  // Cursor läuft bereits, sende Kommando direkt
+                  await fetch("http://localhost:9999/command", {
+                     method: "POST",
+                     headers: {
+                        "Content-Type": "application/json",
+                     },
+                     body: JSON.stringify({
+                        command: "cursorRules.addRule",
+                        args: [slug],
+                     }),
+                  })
+                  toast.success("Rule added to Cursor!")
+               } else {
+                  throw new Error("Cursor not running")
+               }
+            } catch {
+               // Cursor läuft nicht, öffne es
+               const cursorUrl = `cursor://open?command=cursorRules.addRule&args=${encodeURIComponent(
+                  JSON.stringify([slug]),
+               )}`
+
+               toast.loading("Opening Cursor...", {
+                  duration: 3000,
+               })
+
+               window.location.href = cursorUrl
+            }
          }
       } catch (error) {
          console.error("Error:", error)
-         toast.error("Something went wrong. Please try again.")
+         toast.error("Failed to add rule", {
+            description: "Please try again or install manually",
+         })
       }
    }
 

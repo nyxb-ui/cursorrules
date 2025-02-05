@@ -17,7 +17,25 @@
             "command": "cursorRules.addRule",
             "title": "Cursor Rules: Add .cursorrules"
          }
-      ]
+      ],
+      "viewsContainers": {
+         "activitybar": [
+            {
+               "id": "cursorRules",
+               "title": "Cursor Rules",
+               "icon": "images/icon.png"
+            }
+         ]
+      },
+      "views": {
+         "cursorRules": [
+            {
+               "type": "webview",
+               "id": "cursorRules.view",
+               "name": "Cursor Rules"
+            }
+         ]
+      }
    },
    "scripts": {
       "compile": "tsc -p ./",

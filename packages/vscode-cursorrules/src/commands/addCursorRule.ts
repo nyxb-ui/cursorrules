@@ -33,16 +33,26 @@ export async function addCursorRuleCommand(
          const quickPick = vscode.window.createQuickPick()
          quickPick.items = rules.map((rule) => ({
             label: rule.title,
-            description: rule.tags ? `[${rule.tags.join(", ")}]` : "",
+            description: rule.slug,
             detail: [
+               rule.tags?.length ? `Tags: ${rule.tags.join(", ")}` : "",
                rule.libs?.length ? `Libraries: ${rule.libs.join(", ")}` : "",
-               rule.author ? `Author: ${rule.author.name}` : "",
+               rule.author ? `By ${rule.author.name}` : "",
             ]
                .filter(Boolean)
                .join(" • "),
+            buttons: [
+               {
+                  iconPath: new vscode.ThemeIcon("preview"),
+                  tooltip: "Preview Rule Content",
+               },
+            ],
             rule,
          }))
+
          quickPick.placeholder = "Select a Cursor Rule template..."
+         quickPick.matchOnDescription = true
+         quickPick.matchOnDetail = true
 
          selectedRule = await new Promise<Rule | undefined>((resolve) => {
             quickPick.onDidAccept(() => {
