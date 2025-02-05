@@ -11,7 +11,7 @@ cmds = [
 
 [phases.build]
 cmds = [
-    "pnpm build"
+   "pnpm build"
 ]
 
 [variables]
