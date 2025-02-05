@@ -2,7 +2,7 @@
    "name": "cursorrules",
    "displayName": "Cursorrules",
    "description": "An extension for Cursor that lets you pull .cursorrules files from cursorrul.es",
-   "version": "0.2.2",
+   "version": "0.2.3",
    "author": "Nyxb",
    "publisher": "Nyxb",
    "icon": "images/icon.png",
@@ -17,25 +17,7 @@
             "command": "cursorRules.addRule",
             "title": "Cursor Rules: Add .cursorrules"
          }
-      ],
-      "viewsContainers": {
-         "activitybar": [
-            {
-               "id": "cursorRules",
-               "title": "Cursor Rules",
-               "icon": "images/icon.png"
-            }
-         ]
-      },
-      "views": {
-         "cursorRules": [
-            {
-               "type": "webview",
-               "id": "cursorRules.view",
-               "name": "Cursor Rules"
-            }
-         ]
-      }
+      ]
    },
    "scripts": {
       "compile": "tsc -p ./",
