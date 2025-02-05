@@ -6,6 +6,7 @@ cmds = ['pnpm install --frozen-lockfile']
 
 [phases.build]
 cmds = ['pnpm run build']
+env = { NEXT_PUBLIC_APP_URL = "https://cursorrule.es" }
 
 [start]
 cmd = 'node .next/standalone/server.js'
