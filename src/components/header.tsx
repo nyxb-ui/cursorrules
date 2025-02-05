@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import { useEffect, useState } from "react"
 import { AuroraText } from "./ui/aurora-text"
 import { Button } from "./ui/button"
 import {
@@ -11,6 +14,16 @@ import {
 } from "./ui/dialog"
 
 export function Header() {
+   const [isMac, setIsMac] = useState(false)
+
+   useEffect(() => {
+      const isMacOS =
+         // @ts-ignore - userAgentData is not yet in TypeScript's lib
+         navigator?.userAgentData?.platform === "macOS" ||
+         navigator.userAgent.includes("Mac")
+      setIsMac(isMacOS)
+   }, [])
+
    return (
       <div className="md:fixed top-0 z-10 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl">
          <div className="container flex h-14 items-center justify-between px-4">
@@ -52,9 +65,7 @@ export function Header() {
                            will be included for features such as Cursor Chat and{" "}
                            <span className="inline-flex items-center gap-1">
                               <kbd className="px-2 py-1 text-sm font-semibold bg-muted rounded-md">
-                                 {navigator.platform.includes("Mac")
-                                    ? "⌘"
-                                    : "Ctrl"}
+                                 {isMac ? "⌘" : "Ctrl"}
                               </kbd>
                               <kbd className="px-2 py-1 text-sm font-semibold bg-muted rounded-md">
                                  K
