@@ -1,0 +1,23 @@
+[phases.setup]
+nixPkgs = [ "nodejs_20" ]
+
+[phases.install]
+cmds = [
+    "npm install -g corepack",
+    "corepack enable",
+    "corepack prepare pnpm@9.4.0 --activate",
+    "pnpm install"
+]
+
+[phases.build]
+cmds = [
+   "pnpm build",
+]
+
+[variables]
+NODE_ENV = "production"
+NEXT_PUBLIC_APP_URL = "https://cursorrule.es"
+NODE_VERSION = "20.11.0"
+
+[start]
+cmd = "pnpm start"
