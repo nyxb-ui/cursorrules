@@ -20,4 +20,4 @@ NEXT_PUBLIC_APP_URL = "https://cursorrule.es"
 NODE_VERSION = "20.11.0"
 
 [start]
-cmd = "pnpm start"
+cmd = "node .next/standalone/server.js"
