@@ -84,9 +84,9 @@ export function Banner() {
                </g>
             </svg>
          ),
-         title: "Made by NYXB",
+         title: "Made by Nyxb",
          description:
-            "Check out NYXB UI - A modern, customizable UI library for building beautiful React applications. ↗",
+            "Check out Nyxb UI - A modern, customizable UI library for building beautiful React applications. ↗",
       },
    ]
 
